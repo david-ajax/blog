@@ -9,3 +9,4 @@ title: 关于 Kivy 安卓打包的几点心得及排雷
 root
     main.py
     
+tsiuageoug

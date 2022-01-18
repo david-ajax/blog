@@ -4,16 +4,16 @@
 
 # Site
 title: "Blog | Wang Zhiyu"
-subtitle: "Less is more"
+subtitle: ""
 description: "Wang Zhiyu's Blog"
-keywords: "Python,C++,Linux,Ubuntu,Docker,Chroot,RaspberryPi"
+keywords: "Python,Linux,Ubuntu,Docker,RaspberryPi"
 author: Wang Zhiyu
 language: zh-CN
 timezone: ''
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: http://example.com
+url: http://blog.wangzhiyu.ga
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:

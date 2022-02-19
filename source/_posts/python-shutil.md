@@ -2,12 +2,12 @@
 title: 使用 Python 的 Shutil 库操作文件
 date: 2022-2-20
 ---
-> shutil 模块提供了一系列对文件和文件集合的高阶操作, 特别是提供了一些支持文件拷贝和删除的函数.  --docs.python.org
+> shutil 模块提供了一系列对文件和文件集合的高阶操作, 特别是提供了一些支持文件拷贝和删除的函数. 
+> -- https://docs.python.org
 # 导入库
-shutil
 ```python
 import shutil # 通过 shutil.function(args) 的形式访问
-from shutil import * # 通过 function(args) 的形式访问会污染命名空间)
+from shutil import * # 通过 function(args) 的形式访问 (会污染命名空间)
 ```
 # 目录和文件操作
 ## shutil.copyfileobj()

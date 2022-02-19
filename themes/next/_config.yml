@@ -117,8 +117,8 @@ darkmode: false
 # External url should start with http:// or https://
 menu:
   home: / || fa fa-home
-  程序: /program/ || fa fa-code
-  留言: /comment/ || fa fa-comment
+  #程序: /program/ || fa fa-code
+  #留言: /comment/ || fa fa-comment
   #about: /about/ || fa fa-user
   #tags: /tags/ || fa fa-tags
   #categories: /categories/ || fa fa-th

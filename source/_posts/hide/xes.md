@@ -2,19 +2,20 @@
 title: 在学而思的临时 Linux 环境上测试程序并练习 Linux Shell 操作
 date: 2022-2-19
 ---
-当没有 Linux 环境时, 可以使用学而思编程通过在线 IDE 提供的的临时 Linux 服务器上进行临时测试.  
-在某些情况下格外有用  
+当没有 Linux 环境时, 可以使用学而思编程通过在线 IDE 提供的的临时 Linux 服务器上进行临时测试和演示代码.  
+在某些情况下格外有用.  
+由此篇文章所引起的一切问题与作者无关.  
 <!--more-->
 # 服务运行技术
-经测试, 学而思编程提供的 Python IDE 使用两种技术运行服务  
+经测试, 学而思编程提供的 Python IDE 使用两种技术运行服务:  
 1. 使用 Docker 技术在 GNU/Linux 服务器内创建 Debian 系 Linux 容器并在容器内执行代码.(Python 基础模式与 C++)
 2. 在本地安装"学而思编程助手", 实则是一个 Python 环境, 由网页调用 API, 在本地执行程序.(其他 Python 模式)
 我们要使用在线的环境, 所以选择 "Python 基础模式".
 当然, 也可以使用 C++ 模式, 通过 system() 函数调用 shell.
-经测试, 学而思服务器内核版本是 Linux 4.19, 架构是 x86_64. 可能是为了防止滥用,无法使用 root 权限与 sudo 但可以运行大部分无需 root 权限的 Linux 二进制包  
-默认用户名为 *dev*, 可以使用 bash 作为 shell(但默认被禁用, 可以通过 sh 绕过)  
+经测试, 学而思服务器内核版本是 Linux 4.19, 架构是 x86_64. 可能是为了防止滥用,无法使用 root 权限与 sudo 但可以运行大部分无需 root 权限的 Linux 二进制包.  
+默认用户名为 *dev*, 可以使用 bash 作为 shell(但默认被禁用, 可以通过 sh 绕过).  
 可以使用 cd, ls, whoami, chmod, chown等命令, 但可以通过 dir 与 find 替换 ls, 无法使用 apt 安装软件, 但自带有 gcc clang python2 python3, 均可运行, 且可以使用 pip 安装包.  
-可以通过 python 安装 busybox  
+可以安装 busybox.  
 容器可以联网, 但无法执行 wget curl lynx 等命令, 可以自己用 python 造轮子.  
 # 在容器内使用 Bash 的方法
 在左侧编辑框内输入:
@@ -86,5 +87,5 @@ Usage: wget [-c|--continue] [--spider] [-q|--quiet] [-O|--output-document FILE]
         [--no-check-certificate]
         [-S|--server-response] [-U|--user-agent AGENT] URL...
 ```
-现在, 我们可以执行操作了, 注意调用命令前要加上 busybox  
-你可以把自己的代码放于 Github 上, 然后用 busybox 下载并解压 zip 包, 即可用 gcc, clang 与 python 调试并打包程序  
+现在, 我们可以执行操作了, 注意调用命令前要加上 busybox.  
+你可以把自己的代码放于 Github 上, 然后用 busybox 下载并解压 zip 包, 即可用 gcc, clang 与 python 调试并打包程序.  

@@ -69,7 +69,7 @@ shutil.copystat(src, dst, *, follow_symlinks=True)
 > 并非所有平台都提供检查和修改符号链接的功能.Python 本身可以告诉你哪些功能是在本机上可用的.
 > 如果 os.chmod in os.supports_follow_symlinks 为 True, 则 copystat() 可以修改符号链接的权限位.
 > 如果 os.utime in os.supports_follow_symlinks 为 True, 则 copystat() 可以修改符号链接的最近访问和修改时间.
-> 如果 os.chflags in os.supports_follow_symlinks 为 True, 则 copystat() 可以修改符号链接的旗标。 (os.chflags 不是在所有平台上均可用)
+> 如果 os.chflags in os.supports_follow_symlinks 为 True, 则 copystat() 可以修改符号链接的旗标.
 在此功能部分或全部不可用的平台上, 当被要求修改一个符号链接时, copystat() 将尽量拷贝所有内容. copystat() **一定不会**返回失败信息.  
 版本变化:  
 v3.3: 添加了 follow_symlinks 参数并且支持 Linux 扩展属性.  

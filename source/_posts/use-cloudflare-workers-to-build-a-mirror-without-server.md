@@ -1,8 +1,9 @@
 ---
-title: 通过 CloudFlare 搭建镜像站(无需服务器)
+title: 通过 CloudFlare 搭建镜像站(Server Less)
 date: 2022-1-13
 ---
-背景:想通过 sourceforge 下载 webmin 的安装包, 然而由于 sf 的服务器位于国外, 下载速度只有不到 10kb/s. 所以想搭建镜像站以实现高速下载. 无奈没有海外服务器, 只能使用 cloudflare workers 凑合凑合.  
+背景:想通过 sourceforge 下载 webmin 的安装包, 然而由于 sf 的服务器位于国外, 下载速度只有不到 10kb/s. 所以想搭建镜像站以实现高速下载. 无奈没有海外服务器, 只能使用 cloudflare workers 凑合.  
+<!--more-->
 1. 注册并登录一个 cloudflare 账号(略)  
 2. 打开[ cloudflare workers 官网](https://workers.cloudflare.com/)
 ![登录后显示界面](https://i.loli.net/2021/10/06/HkIZlwbrjLeJfcQ.png)

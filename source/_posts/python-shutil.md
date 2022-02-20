@@ -3,7 +3,7 @@ title: 使用 Python 的 Shutil 库操作文件
 date: 2022-2-20
 ---
 > shutil 模块提供了一系列对文件和文件集合的高阶操作, 特别是提供了一些支持文件拷贝和删除的函数. 
-> *---- https://docs.python.org*
+> *--- https://docs.python.org*
 <!--more-->
 # 导入库
 ```python

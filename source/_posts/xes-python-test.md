@@ -1,8 +1,9 @@
 ---
-title: Hello World
+title: 在学而思的临时 Linux 环境上测试程序
 date: 2021-5-18
 ---
-对于一般的单文件 Python 程序, 可以使用学而思编程提供的 Python IDE 进行测试
+对于一般的单文件 Python 程序, 可以使用学而思编程通过在线 IDE 提供的的临时 Linux 服务器上进行测试.
+<!--more-->
 # 服务运行技术
 经测试, 学而思编程提供的 Python IDE 使用两种技术运行服务  
 ## 使用 Docker 技术在 GNU/Linux 服务器内创建多个 Debian 系 Linux 容器并在容器内执行代码.

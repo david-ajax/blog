@@ -6,6 +6,7 @@ date: 2022-2-20
 > *--- https://docs.python.org*
 <!--more-->
 # 导入库
+由于 shutil 是一个 BIF(Built-in Function) 所以不需要额外的安装操作
 ```python
 import shutil # 通过 shutil.function(args) 的形式访问
 from shutil import * # 通过 function(args) 的形式访问 (会污染命名空间)
@@ -36,9 +37,10 @@ shutil.copyfile("a.file", "b.file") # 将 a.file 的内容复制到 b.file. 如�
 src 和 dst 均为路径类对象或以字符串形式给出的路径名.
 dst 必须是完整的目标文件名.
 如果 src 和 dst 指定了同一个文件, 则将引发 *SameFileError.*
-目标位置必须是可写的, 否则将引发 OSError 异常. 如果 dst 已经存在，它将被替换.
+目标位置必须是可写的, 否则将引发 *OSError* 异常. 如果 dst 已经存在，它将被替换.
 特殊文件如字符或块设备以及管道无法用此函数来拷贝.(比如 /dev/sda1(Linux 下的硬盘设备) 等等)
-如果 follow_symlinks 为 Flase 且 src 为符号链接, 则将创建一个新的符号链接而不是拷贝 src 所指向的文件(即拷贝符号链接本身).
+如果 follow_symlinks 为 Flase 且 src 为符号链接, 则将**创建一个新的符号链接**而不是拷贝 src 所指向的文件(即拷贝符号链接本身).
+如果 follow_symlinks 为 True 且 src 为符号链接, 则将**拷贝 src 所指向的文件**(即拷贝符号链接本身).
 版本变化:
 v3.3: 引发 IOError 而不是 *OSError*. 增加了 follow_symlinks 参数.
 v3.4: 引发 SameFileError 而不是 *Error*. 由于前者是后者的子类, 此改变向后兼容.
@@ -47,10 +49,11 @@ v3.8: 可能会在内部使用平台专属的快速拷贝系统调用以更高�
 ```python
 shutil.copymode(src, dst, *, follow_symlinks=True)
 ```
-作用: 从 src 拷贝权限信息到 dst. 文件的内容、所有者和分组将不受影响.
+作用: 从 src 拷贝权限位信息到 dst. 文件的内容、所有者和分组将不受影响.(类似于 chmod)
 解释:
 src 和 dst 均为路径类对象或字符串形式的路径名.
 如果 follow_symlinks 为 Flase, 并且 src 和 dst 均为符号链接, shutil.copymode() 将尝试**修改 dst 本身**的模式(而非它所指向的文件).
+如果 follow_symlinks 为 True, 并且 src 和 dst 均为符号链接, shutil.copymode() 将尝试**修改 det 指向的文件**的模式.
 此功能**并不是在所有平台上均可用**(不同操作系统的文件系统权限机制不同).(见 shutil.copystat())
 如果 copymode() 无法修改本机平台上的符号链接，而它被要求这样做, 它将**不做任何操作**.
 版本变化:
@@ -70,3 +73,16 @@ shutil.copystat(src, dst, *, follow_symlinks=True)
 在此功能部分或全部不可用的平台上, 当被要求修改一个符号链接时, copystat() 将尽量拷贝所有内容. copystat() **一定不会**返回失败信息.  
 版本变化:  
 v3.3: 添加了 follow_symlinks 参数并且支持 Linux 扩展属性.  
+## shutil.copy()
+```python
+shutil.copy(src, dst, *, follow_symlinks=True)
+```
+作用: 将文件 src 拷贝到文件或目录 dst, 并复制文件数据和文件的权限模式.  
+解释:  
+src 和 dst 应为 路径类对象或字符串.  
+如果 dst 指定了一个目录，文件将使用 src 中的基准文件名拷贝到 dst 中, 并返回新创建文件所对应的路径.  
+如果 follow_symlinks 为 False 且 src 为符号链接, 则 dst 也将被创建为符号链接. 如果 follow_symlinks 为 True 且 src 为符号链接, dst 将拥有 src 所指向的文件的内容.  
+shutil.copy() 会拷贝文件数据和文件的权限模式. 其他元数据, 例如文件的创建和修改时间不会被保留. 要保留所有原有的元数据, 请改用 shutil.copy2().  
+版本变化:  
+v3.3: 添加了 follow_symlinks 参数。 现在会返回新创建文件的路径.  
+v3.8: 可能会在内部使用平台专属的快速拷贝系统调用以更高效地拷贝文件.  

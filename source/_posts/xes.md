@@ -1,13 +1,14 @@
 ---
-title: 在学而思的临时 Linux 环境上测试程序
-date: 2022-2-20
+title: 在学而思的临时 Linux 环境上测试程序并练习 Linux Shell 操作
+date: 2022-2-19
 ---
-对于一般的单文件 Python 程序, 可以使用学而思编程通过在线 IDE 提供的的临时 Linux 服务器上进行测试.
+当没有 Linux 环境时, 可以使用学而思编程通过在线 IDE 提供的的临时 Linux 服务器上进行临时测试.  
+在某些情况下格外有用  
 <!--more-->
 # 服务运行技术
 经测试, 学而思编程提供的 Python IDE 使用两种技术运行服务  
 1. 使用 Docker 技术在 GNU/Linux 服务器内创建 Debian 系 Linux 容器并在容器内执行代码.(Python 基础模式与 C++)
-2. 在本地安装"学而思编程助手", 用网页调用 API, 在本地执行程序.(其他 Python 模式)
+2. 在本地安装"学而思编程助手", 实则是一个 Python 环境, 由网页调用 API, 在本地执行程序.(其他 Python 模式)
 我们要使用在线的环境, 所以选择 "Python 基础模式".
 当然, 也可以使用 C++ 模式, 通过 system() 函数调用 shell.
 经测试, 学而思服务器内核版本是 Linux 4.19, 架构是 x86_64. 可能是为了防止滥用,无法使用 root 权限与 sudo 但可以运行大部分无需 root 权限的 Linux 二进制包  
@@ -32,19 +33,22 @@ $ 8iibiauewf83guewf87238......bash
 dev@hostname:~/bin$ cd
 dev@hostname:~$ echo "成功进入 Bash"
 ```
-现在, 我们已经成功进入 Bash.  
-但要在里面调试程序, 这还远远不够.
-# 从互联网下载需调试的程序
+现在, 我们已经成功进入 Bash.
+但这还远远不够, 我们需要一个更方便的方式来调用系统操作.  
+# 安装 Busybox
 此处用 $ 指代 Linux Shell
 ```bash
 $ pip3 install wget
 $ python3
 >>> import wget, os
->>> os.chdir("/home/dev")
+>>> os.system("mkdir busybox")
+>>> os.chdir("busybox")
 >>> wget.download("https://www.busybox.net/downloads/binaries/1.35.0-x86_64-linux-musl/busybox", "busybox") # 下载 busybox
 >>> os.system("chmod 777 busybox")
+>>> os.system("export PATH=$(pwd):$PATH") # 添加环境变量
+>>> os.system("..")
 >>> exit()
-$ ./busybox
+$ busybox
 BusyBox v1.35.0 multi-call binary.
 BusyBox is copyrighted by many authors between 1998-2015.
 Licensed under GPLv2. See source distribution for detailed
@@ -74,4 +78,13 @@ Currently defined functions:
         sync, sysctl, syslogd, tac, tail, tar, taskset, tc, tee, telnet, telnetd, test, tftp, time, timeout, top, touch, tr, traceroute, traceroute6, true, truncate, tty, tunctl,
         ubirename, udhcpc, udhcpd, uevent, umount, uname, uncompress, unexpand, uniq, unix2dos, unlink, unlzma, unshare, unxz, unzip, uptime, usleep, uudecode, uuencode, vconfig,
         vi, w, watch, watchdog, wc, wget, which, who, whoami, xargs, xxd, xz, xzcat, yes, zcat
-$ 
+$ busybox wget
+BusyBox v1.35.0 multi-call binary.
+
+Usage: wget [-c|--continue] [--spider] [-q|--quiet] [-O|--output-document FILE]
+        [--header 'header: value'] [-Y|--proxy on/off] [-P DIR]
+        [--no-check-certificate]
+        [-S|--server-response] [-U|--user-agent AGENT] URL...
+```
+现在, 我们可以执行操作了, 注意调用命令前要加上 busybox  
+你可以把自己的代码放于 Github 上, 然后用 busybox 下载并解压 zip 包, 即可用 gcc, clang 与 python 调试并打包程序  

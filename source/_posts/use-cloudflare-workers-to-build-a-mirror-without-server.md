@@ -2,13 +2,11 @@
 title: 通过 CloudFlare 搭建镜像站(Server Less)
 date: 2022-1-13
 ---
-背景:想通过 sourceforge 下载 webmin 的安装包, 然而由于 sf 的服务器位于国外, 下载速度只有不到 10kb/s. 所以想搭建镜像站以实现高速下载. 无奈没有海外服务器, 只能使用 cloudflare workers 凑合.  
+背景:想通过 SourceForge 下载 Webmin 的安装包, 然而由于 SF 的服务器位于国外, 下载速度只有不到 10kb/s. 所以想搭建镜像站以实现高速下载. 无奈没有海外服务器, 只能使用 CloudFlare Workers 凑合.  
 <!--more-->
-1. 注册并登录一个 cloudflare 账号(略)  
-2. 打开[ cloudflare workers 官网](https://workers.cloudflare.com/)
-![登录后显示界面](https://i.loli.net/2021/10/06/HkIZlwbrjLeJfcQ.png)
+1. 注册并登录一个 CloudFlare 账号
+2. 打开[ CloudFlare Workers 官网](https://workers.cloudflare.com/), 并进入管理页面.
 3. 点击"创建 Worker", 进入如下界面
-![编辑界面](https://i.loli.net/2021/10/06/sRax8XN1D7fUPvm.png)
 4.把原来的代码全部删除, 换成下面代码:
 ``` javascript
 // 目标地址
@@ -17,8 +15,8 @@ const upstream = 'www.example.com'
 // 代理路径(默认为'/',即根目录)
 const upstream_path = '/'
 
-// 目标地址移动版
-const upstream_mobile = 'www.example.com'
+// 目标地址(移动版)
+const upstream_mobile = 'm.example.com'
 
 // 不为以下国家/地区服务
 const blocked_region = ['国家代号']
@@ -168,4 +166,4 @@ async function device_status(user_agent_info) {
     return flag;
 }
 ```
-5. 点击"保存并部署", 即可通过域名访问镜像站了!
+5. 点击"保存并部署", 即可通过 Worker 提供的域名访问镜像站了!

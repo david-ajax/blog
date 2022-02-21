@@ -99,7 +99,7 @@ copy2() 会使用 copystat() 来拷贝文件元数据.
 版本更改:  
 v3.3: 添加了 follow_symlinks 参数, 还会尝试拷贝扩展文件系统属性 (目前仅限 Linux)..现在会返回新创建文件的路径.  
 v3.8: 可能会在内部使用平台专属的快速拷贝系统调用以更高效地拷贝文件.
-# shutil.copytree()
+## shutil.copytree()
 ```python
 shutil.copytree(src, dst, symlinks=False, ignore=None, copy_function=copy2, ignore_dangling_symlinks=False, dirs_exist_ok=False)
 ```

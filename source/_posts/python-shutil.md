@@ -125,4 +125,4 @@ shutil.copytree(src, dst, ignore=shutil.ignore_patterns('*.pyc', 'tmp*'))
 ```
 作用: 辅助 copytree() 忽略掉一些文件  
 解释:  
-*patterns: 忽略文件的列表, 以 \* 作为通配符
+*patterns: 忽略文件的列表, 以星号作为通配符

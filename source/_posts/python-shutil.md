@@ -104,19 +104,18 @@ v3.8: 可能会在内部使用平台专属的快速拷贝系统调用以更高�
 shutil.copytree(src, dst, symlinks=False, ignore=None, copy_function=copy2, ignore_dangling_symlinks=False, dirs_exist_ok=False)
 ```
 作用: 将以 src 为 Root 的整个目录树拷贝到名为 dst 的目录并返回目标目录.  
+解释:  
 dirs_exist_ok: 指明是否要在一个或多个目标文件已存在的情况下引发异常.  
 目录的权限和时间会通过 copystat() 来拷贝, 单个文件则会使用 copy2() 来拷贝.  
 如果 symlinks 为 True, 源目录树中的符号链接会在新目录树中也表示为符号链接, 并且原链接的元数据在平台允许的情况下也会被拷贝; 如果为 False 或省略, 则会将被链接文件的内容和元数据拷贝到新目录树.  
-当 symlinks 为 False 时,如果符号链接所指向的文件不存在, 则会在拷贝进程的末尾将一个异常添加到 Error 异常中的错误列表. 如果你希望屏蔽此异常那就将 ignore_dangling_symlinks 设为 True.  
+当 symlinks 为 False 时,如果符号链接所指向的文件不存在, 则会在拷贝进程的末尾将一个异常添加到 Error 异常中的错误列表. 如果你希望屏蔽此异常, 那就将 ignore_dangling_symlinks 设为 True.  
 注意: 此选项在不支持 os.symlink() 的平台上将不起作用.  
-ignore: 一个可调用对象, 该对象将接受 copytree() 所访问的目录以及 os.listdir() 所返回的目录内容列表作为其参数. 由于 copytree() 是递归地被调用的,ignore 可调用对象对于每个被拷贝目录都将被调用一次. 该可调用对象必须返回一个相对于当前目录的目录和文件名序列(即其第二个参数的子集); 随后这些名称将在拷贝进程中被忽略. ignore_patterns() 可被用于创建这种基于 glob 风格模式来忽略特定名称的可调用对象.  
-如果发生了异常,将引发一个附带原因列表的 Error.
+ignore: 一个可调用对象, 该对象将接受 copytree() 所访问的目录以及 os.listdir() 所返回的目录内容列表作为其参数. 由于 copytree() 是递归地被调用的, ignore 可调用对象对于每个被拷贝目录都将被调用一次. 该可调用对象必须返回一个相对于当前目录的目录和文件名序列(即其第二个参数的子集); 随后这些名称将在拷贝进程中被忽略. ignore_patterns() 可被用于创建这种基于 glob 风格模式来忽略特定名称的可调用对象. 如果发生了异常,将引发一个附带原因列表的 Error.  
 copy_function: 一个将被用来拷贝每个文件的可调用对象(用于替换 copy2()). 它在被调用时会将源路径和目标路径作为参数传入. 默认情况下, copy2() 将被使用,但任何支持同样签名(与 copy() 一致)都可以使用.  
-版本变化
+版本变化:  
 v3.3: 当 symlinks 为假值时拷贝元数据. 现在会返回 dst.
 v3.2: 添加了 copy_function 参数以允许提供定制的拷贝函数. 添加了 ignore_dangling_symlinks 参数以便在 symlinks 为假值时屏蔽符号链接错误.
-v3.8: 可能会在内部使用平台专属的快速拷贝系统调用以更高效地拷贝文件. 参见 依赖于具体平台的高效拷贝操作 一节.
-3.8 新版功能: dirs_exist_ok 形参.
+v3.8: 可能会在内部使用平台专属的快速拷贝系统调用以更高效地拷贝文件. 增加 dirs_exist_ok 形参.
 
 ## shutil.ignore_patterns()
 ```python

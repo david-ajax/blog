@@ -36,4 +36,5 @@ XFCE
 ```bash
 sudo apt install xfce4
 ```
+建议不要美化过多, 否则会将过多精力放在配置上而完不成自己的任务.  
 end.

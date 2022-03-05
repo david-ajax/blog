@@ -11,8 +11,8 @@ Prorocol: http:
 Auth: none  
 Hostname(Domain): music.163.com  
 Port: none(实际为80)  
-/#/m/song - Pathname  
-id=5221167 - Quary(不带问号)  
+Pathname: /#/m/song  
+Quary: id=5221167(不带问号)  
 我们要用到 Quary 部分  
 将其嵌入解析链接  
 格式: https://music.163.com/song/media/outer/url?[quary].mp3  

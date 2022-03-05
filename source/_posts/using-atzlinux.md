@@ -2,6 +2,8 @@
 title: 使用铜豌豆 Linux 软件源以在 Ubuntu Linux 上安装迅雷, QQ, 微信等众多常用软件
 date: 2022-3-6
 ---
+> 铜豌豆 Linux 收集整理制作了大量中国人常用的应用软件, 丰富 Linux 桌面系统软件生态......
+<!--more-->
 # 添加铜豌豆 Linux 软件源
 在 shell 上运行以下命令:  
 ```bash

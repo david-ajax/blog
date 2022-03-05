@@ -8,6 +8,6 @@ date: 2021-5-18
 由 Vercel 提供自动部署服务与CDN加速服务  
 由 Freenom 提供域名(wangzhiyu.ga)  
 由 CloudFlare 提供DNS域名解析  
-[主页面](https://www.wangzhiyu.ga)
-[公用文件存储](https://box.wangzhiyu.ga)
+[主页面](https://www.wangzhiyu.ga)  
+[公用文件存储](https://box.wangzhiyu.ga)  
 欢迎留言 :)

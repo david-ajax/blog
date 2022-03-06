@@ -658,7 +658,7 @@ gitalk:
 rating:
   enable: false
   id:     # <app_id>
-  color:  fc6423
+  color:  0000CC
 
 # AddThis Share. See: https://www.addthis.com
 # Go to https://www.addthis.com/dashboard to customize your tools.

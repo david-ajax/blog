@@ -635,7 +635,7 @@ livere_uid: # <your_uid>
 # Gitalk
 # For more information: https://gitalk.github.io, https://github.com/gitalk/gitalk
 gitalk:
-  enable: true
+  enable: false
   github_id: david-ajax # GitHub repo owner
   repo: blog # Repository name to store issues
   client_id: 144c51c6a15ebd03257d # GitHub Application Client ID

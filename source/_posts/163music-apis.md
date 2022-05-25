@@ -16,7 +16,7 @@ Port: none(实际为80)
 Pathname: /#/m/song  
 Quary: id=5221167(不带问号)  
 我们要用到 Quary 部分  
-将问号后的数字分离出来, 下文称为 MusicID  
+将"="后的数字分离出来, 下文称为 MusicID  
 # 获得歌曲的直接播放链接 
 将 MusicID 嵌入解析链接  
 格式: https://music.163.com/song/media/outer/url?id=[MusicID].mp3  

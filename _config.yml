@@ -4,16 +4,16 @@
 
 # Site
 title: "Blog | Wang Zhiyu"
-subtitle: "一点经验"
+subtitle: "经验"
 description: "Wang Zhiyu's Blog"
-keywords: "Python,Linux,Ubuntu,C++,RaspberryPi"
+keywords: "Python,Linux,Arch,C++,C,VM"
 author: Wang Zhiyu
 language: zh-CN
 timezone: ''
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: http://blog.wangzhiyu.ga
+url: http://blog.imwangzhiyu.ga
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
@@ -103,3 +103,6 @@ theme: next
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: ''
+
+Plugins: 
+- hexo-generate-feed
